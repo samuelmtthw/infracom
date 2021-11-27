@@ -1,10 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Outfit", sans-serif;
+  font-family: "Comfortaa", sans-serif;
+}
+
+body {
+  background-color: #ddd;
 }
 
 .navbar {
@@ -19,8 +23,8 @@
 }
 
 .wrapper {
-  width: 1440px;
-  /* padding: 30px 100px; */
+  width: 100%;
+  max-width: 1440px;
 }
 
 li {
@@ -32,8 +36,49 @@ li a {
   text-decoration: none;
   color: black;
   transition-duration: 150ms;
+  font-weight: 700;
+  padding-bottom: 3px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
 
 li a:hover {
-  color: grey;
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.btn {
+  border-radius: 1em;
+  background-color: none;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+th,
+td {
+  border-bottom: none;
+  padding: 10px !important;
+}
+
+tr {
+  border-radius: 1em;
+}
+
+.btn-primary {
+  background-color: #7db7b4;
+  border-color: #7db7b4;
+}
+.btn-primary:hover {
+  background-color: #67a5a2;
+  border-color: #67a5a2;
+}
+
+.text-primary {
+  color: #7db7b4 !important;
+}
+
+.border-primary {
+  border-color: #7db7b4 !important;
 }
