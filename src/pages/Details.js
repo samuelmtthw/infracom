@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { alertError } from "../apis/swal";
 import { getBlog } from "../store/actions";
 
 export default function Details() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [blog, setBlog] = useState({});
-  let { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,9 +20,10 @@ export default function Details() {
         setBlog(result);
       })
       .catch((err) => {
+        navigate("/");
         alertError(err.message);
       });
-  }, []);
+  }, [dispatch, id]);
 
   if (isLoading) {
     return (

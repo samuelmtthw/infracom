@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { alertSuccess } from "../apis/swal";
+import { alertError, alertSuccess } from "../apis/swal";
 import { createBlog } from "../store/actions";
 
 export default function AddPage() {
@@ -21,7 +21,7 @@ export default function AddPage() {
     setInput({ ...input, [name]: value });
   };
 
-  const addBlog = (e) => {
+  const submitForm = (e) => {
     e.preventDefault();
     dispatch(createBlog(input))
       .then((result) => {
@@ -29,7 +29,8 @@ export default function AddPage() {
         alertSuccess(`New blog added with id: ${result.id}`);
       })
       .catch((err) => {
-        console.log(err);
+        const message = err.message.join(", ");
+        alertError(message);
       });
   };
 
@@ -38,7 +39,7 @@ export default function AddPage() {
       <div className="wrapper py-5 mx-4 d-flex justify-content-center">
         <form
           className="blogForm card p-4 shadow d-flex flex-column"
-          onSubmit={addBlog}
+          onSubmit={submitForm}
         >
           <h3 className="mb-3">Add Blog</h3>
 

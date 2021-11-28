@@ -11,7 +11,6 @@ export default function HomePage() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    console.log("useState called");
     setIsLoading(true);
     dispatch(getBlogs())
       .then((result) => {
@@ -21,7 +20,7 @@ export default function HomePage() {
       .catch((err) => {
         alertError(err.message);
       });
-  }, []);
+  }, [dispatch]);
 
   const removeBlog = ({ id, name }) => {
     Swal.fire({
@@ -41,7 +40,7 @@ export default function HomePage() {
             setBlogs(updatedBlogs);
           })
           .catch((err) => {
-            console.log(err);
+            alertError(err.message);
           });
       } else {
         alertSuccess("Processs canceled");

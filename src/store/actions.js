@@ -67,12 +67,47 @@ export function setBlog(payload) {
   };
 }
 
+export function editBlog(payload) {
+  return () => {
+    return new Promise((resolve, reject) => {
+      server({
+        method: "PUT",
+        url: `/blogs/${payload.id}`,
+        data: payload,
+      })
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err.response.data);
+        });
+    });
+  };
+}
+
 export function deleteBlog(id) {
   return () => {
     return new Promise((resolve, reject) => {
       server({
         method: "DELETE",
         url: `/blogs/${id}`,
+      })
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err.response.data);
+        });
+    });
+  };
+}
+
+export function getStatistics() {
+  return () => {
+    return new Promise((resolve, reject) => {
+      server({
+        method: "GET",
+        url: `/statistics`,
       })
         .then(({ data }) => {
           resolve(data);

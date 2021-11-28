@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { SET_BLOG, SET_BLOGS } from "./actionType";
 
 const initialState = {
-  blogs: [1, 2, 3],
+  blogs: [],
   blog: {},
 };
 
