@@ -119,3 +119,8 @@ tr {
 img {
   border-radius: 1em;
 }
+
+.blogForm {
+  max-width: 600px;
+  width: 600px;
+}

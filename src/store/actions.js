@@ -1,6 +1,24 @@
 import { SET_BLOG, SET_BLOGS } from "./actionType";
 import server from "../apis/server";
 
+export function createBlog(payload) {
+  return () => {
+    return new Promise((resolve, reject) => {
+      server({
+        method: "POST",
+        url: "/blogs",
+        data: payload,
+      })
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err.response.data);
+        });
+    });
+  };
+}
+
 export function getBlogs() {
   return () => {
     return new Promise((resolve, reject) => {

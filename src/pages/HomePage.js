@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { alertError, alertSuccess } from "../apis/swal";
-import { getBlogs } from "../store/actions";
+import { deleteBlog, getBlogs } from "../store/actions";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ export default function HomePage() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
+    console.log("useState called");
     setIsLoading(true);
     dispatch(getBlogs())
       .then((result) => {
@@ -22,7 +23,7 @@ export default function HomePage() {
       });
   }, []);
 
-  const deleteBlog = ({ id, name }) => {
+  const removeBlog = ({ id, name }) => {
     Swal.fire({
       title: "Are you sure?",
       text: `You are going to delete: ${name}!`,
@@ -33,16 +34,15 @@ export default function HomePage() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.$store
-        //   .dispatch("deleteVideoAdmin", videoId)
-        //   .then((result) => {
-        //     alertSuccess(result.message);
-        //     this.fetchCoursesDetailAdmin();
-        //   })
-        //   .catch((err) => {
-        //     alertError(err.message);
-        //   });
-        console.log("deleted");
+        dispatch(deleteBlog(id))
+          .then((result) => {
+            alertSuccess(result.message);
+            const updatedBlogs = blogs.filter((el) => el.id !== Number(id));
+            setBlogs(updatedBlogs);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         alertSuccess("Processs canceled");
       }
@@ -115,7 +115,7 @@ export default function HomePage() {
                       <button
                         className="btn border-danger text-danger me-1 my-1"
                         onClick={() => {
-                          deleteBlog({ id: el.id, name: el.title });
+                          removeBlog({ id: el.id, name: el.title });
                         }}
                       >
                         delete
