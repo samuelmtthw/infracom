@@ -65,6 +65,10 @@ li a:hover {
   border-spacing: 0 10px;
 }
 
+thead th {
+  font-size: 1.1em;
+}
+
 th,
 td {
   border-bottom: none;

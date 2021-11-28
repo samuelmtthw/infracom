@@ -48,3 +48,20 @@ export function setBlog(payload) {
     payload: payload,
   };
 }
+
+export function deleteBlog(id) {
+  return () => {
+    return new Promise((resolve, reject) => {
+      server({
+        method: "DELETE",
+        url: `/blogs/${id}`,
+      })
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err.response.data);
+        });
+    });
+  };
+}

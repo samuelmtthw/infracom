@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { alertError } from "../apis/swal";
+import Swal from "sweetalert2";
+import { alertError, alertSuccess } from "../apis/swal";
 import { getBlogs } from "../store/actions";
 
 export default function HomePage() {
@@ -20,6 +21,33 @@ export default function HomePage() {
         alertError(err.message);
       });
   }, []);
+
+  const deleteBlog = ({ id, name }) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `You are going to delete: ${name}!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // this.$store
+        //   .dispatch("deleteVideoAdmin", videoId)
+        //   .then((result) => {
+        //     alertSuccess(result.message);
+        //     this.fetchCoursesDetailAdmin();
+        //   })
+        //   .catch((err) => {
+        //     alertError(err.message);
+        //   });
+        console.log("deleted");
+      } else {
+        alertSuccess("Processs canceled");
+      }
+    });
+  };
 
   if (isLoading) {
     return (
@@ -56,11 +84,11 @@ export default function HomePage() {
           <table className="table">
             <thead className="thead-dark">
               <tr className="shadow">
-                <th scope="col">id</th>
-                <th scope="col">title</th>
-                <th scope="col">author</th>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
                 <th scope="col" className="text-center">
-                  actions
+                  Actions
                 </th>
               </tr>
             </thead>
@@ -84,7 +112,12 @@ export default function HomePage() {
                       >
                         update
                       </Link>
-                      <button className="btn border-danger text-danger me-1 my-1">
+                      <button
+                        className="btn border-danger text-danger me-1 my-1"
+                        onClick={() => {
+                          deleteBlog({ id: el.id, name: el.title });
+                        }}
+                      >
                         delete
                       </button>
                     </td>
