@@ -103,13 +103,13 @@ export default function HomePage() {
                         to={`/blogs/${el.id}`}
                         className="btn border-primary text-primary me-1 my-1"
                       >
-                        details
+                        Details
                       </Link>
                       <Link
                         to={`/update/${el.id}`}
                         className="btn border-secondary text-secondary me-1 my-1"
                       >
-                        update
+                        Update
                       </Link>
                       <button
                         className="btn border-danger text-danger me-1 my-1"
@@ -117,7 +117,7 @@ export default function HomePage() {
                           removeBlog({ id: el.id, name: el.title });
                         }}
                       >
-                        delete
+                        Delete
                       </button>
                     </td>
                   </tr>

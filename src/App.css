@@ -124,3 +124,17 @@ img {
   max-width: 600px;
   width: 600px;
 }
+
+/* html {
+  font-size: 0.8rem;
+} */
+@media (max-width: 576px) {
+  html {
+    font-size: 0.7rem;
+  }
+
+  .blogForm {
+    max-width: 300px;
+    width: 300px;
+  }
+}

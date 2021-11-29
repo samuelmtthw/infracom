@@ -16,7 +16,6 @@ export default function Statistics() {
         result.forEach((element) => {
           element.totalPost = Number(element.totalPost);
         });
-        console.log(result);
         setStatistics(result);
         setIsLoading(false);
       })
@@ -32,7 +31,12 @@ export default function Statistics() {
   return (
     <section id="Statistics" className="page">
       <div className="wrapper py-3 px-4 ">
-        <h3>Post / User</h3>
+        <h3>Statistics</h3>
+        <p>
+          Here are the chart of the number of posts that has been posted per
+          user. <br />
+          Hover/click over the pie chart to get the details.
+        </p>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
