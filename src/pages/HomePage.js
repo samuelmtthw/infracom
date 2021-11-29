@@ -61,7 +61,7 @@ export default function HomePage() {
             create new blog
           </Link>
           <div className="h-50 d-flex justify-content-center align-items-center">
-            <h3 className="text-muted">fetching data...</h3>
+            <h3 className="text-muted">Fetching data...</h3>
           </div>
         </div>
       </section>

@@ -58,7 +58,7 @@ export default function UpdatePage() {
       <section id="UpdatePage" className="page">
         <div className="wrapper py-5 mx-4 d-flex justify-content-center">
           <div className="h-50 d-flex justify-content-center align-items-center">
-            <h3 className="text-muted">fetching data...</h3>
+            <h3 className="text-muted">Fetching data...</h3>
           </div>
         </div>
       </section>

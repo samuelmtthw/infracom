@@ -25,7 +25,15 @@ export default function Statistics() {
   }, []);
 
   if (isLoading) {
-    return <section id="Statistics"></section>;
+    return (
+      <section id="Statistics" className="page">
+        <div className="wrapper py-5 mx-4">
+          <div className="h-75 d-flex justify-content-center align-items-center">
+            <h3 className="text-muted">Fetching data...</h3>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (

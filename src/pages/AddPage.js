@@ -38,45 +38,54 @@ export default function AddPage() {
     <section id="AddPage" className="page">
       <div className="wrapper py-5 mx-4 d-flex justify-content-center">
         <form
+          data-testid="add-form"
           className="blogForm card p-4 shadow d-flex flex-column"
           onSubmit={submitForm}
         >
           <h3 className="mb-3">Add Blog</h3>
 
-          <label className="mb-1 text-muted">Title</label>
-          <input
-            onChange={handleInput}
-            value={input.title}
-            type="text"
-            name="title"
-            className="form-control mb-3"
-          />
-          <label className="mb-1 text-muted">Author</label>
-          <input
-            onChange={handleInput}
-            value={input.author}
-            type="text"
-            name="author"
-            className="form-control mb-3"
-          />
-          <label className="mb-1 text-muted">Content</label>
-          <textarea
-            onChange={handleInput}
-            value={input.content}
-            type="text"
-            name="content"
-            className="form-control mb-3"
-            cols="30"
-            rows="5"
-          />
-          <label className="mb-1 text-muted">Thumbnail URL</label>
-          <input
-            onChange={handleInput}
-            value={input.thumbnail}
-            type="url"
-            name="thumbnail"
-            className="form-control mb-3"
-          />
+          <label className="mb-1 text-muted">
+            Title
+            <input
+              onChange={handleInput}
+              value={input.title}
+              type="text"
+              name="title"
+              className="form-control mb-3"
+            />
+          </label>
+          <label className="mb-1 text-muted">
+            Author
+            <input
+              onChange={handleInput}
+              value={input.author}
+              type="text"
+              name="author"
+              className="form-control mb-3"
+            />
+          </label>
+          <label className="mb-1 text-muted">
+            Content
+            <textarea
+              onChange={handleInput}
+              value={input.content}
+              type="text"
+              name="content"
+              className="form-control mb-3"
+              cols="30"
+              rows="5"
+            />
+          </label>
+          <label className="mb-1 text-muted">
+            Thumbnail URL
+            <input
+              onChange={handleInput}
+              value={input.thumbnail}
+              type="url"
+              name="thumbnail"
+              className="form-control mb-3"
+            />
+          </label>
           <input
             type="submit"
             value="Submit"
